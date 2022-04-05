@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: changesets/init.xml
+      relativeToChangelogFile: true

@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: demo-server
+
+  # to have webservices connect to localhost in IDEs
+  profiles:
+    active: default,local
+
+  # for now, for both r2dbc and jdbc. Also for now with the same user
+  # as the app, but this should be changed
+  liquibase:
+    url: jdbc:${dbUrl}
+    user: ${login}
+    password: ${password}
+
+  # for microservices with jpa/hibernate
+  datasource:
+    url: jdbc:${dbUrl}
+    username: ${login}
+    password: ${password}
+
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: validate
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        format_sql: true
+        # Used when action: create is uncommented
+        hbm2ddl:
+          delimiter: ;
+      # Uncomment action to automatically generate the database sql schema file
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              #action: create
+              create-target: src/main/resources/${dbname}.sql
+              create-source: metadata
+
+customQuery:
+
+dbName: demo
