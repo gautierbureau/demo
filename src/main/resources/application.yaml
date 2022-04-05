@@ -2,12 +2,6 @@ spring:
   application:
     name: demo-server
 
-  # to have webservices connect to localhost in IDEs
-  profiles:
-    active: default,local
-
-  # for now, for both r2dbc and jdbc. Also for now with the same user
-  # as the app, but this should be changed
   liquibase:
     url: jdbc:${dbUrl}
     user: ${login}
