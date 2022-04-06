@@ -14,7 +14,6 @@ public class PostgreSQLInitializer implements ApplicationContextInitializer<Conf
     private static final long MEMORY_IN_BYTES = 128 * 1024 * 1024; // 128 MB
     private static final long MEMORY_SWAP_IN_BYTES = 256 * 1024 * 1024; // 256 MB
     private static final PostgreSQLContainer<?> POSTGRESQL_CONTAINER = new PostgreSQLContainer<>(POSTGRESQL_IMAGE)
-            .withDatabaseName("demo")
             .withCreateContainerCmdModifier(cmd -> cmd.getHostConfig()
                     .withMemory(MEMORY_IN_BYTES)
                     .withMemorySwap(MEMORY_SWAP_IN_BYTES)
@@ -25,15 +24,16 @@ public class PostgreSQLInitializer implements ApplicationContextInitializer<Conf
         final ConfigurableEnvironment environment = applicationContext.getEnvironment();
 
         POSTGRESQL_CONTAINER
-                .withUsername(environment.getProperty("spring.datasource.username"))
-                .withPassword(environment.getProperty("spring.datasource.password"))
+                .withDatabaseName(environment.getProperty("dbName"))
                 .start();
 
         TestPropertyValues.of(Map.of(
                 "spring.liquibase.url", POSTGRESQL_CONTAINER.getJdbcUrl(),
                 "spring.liquibase.user", POSTGRESQL_CONTAINER.getUsername(),
                 "spring.liquibase.password", POSTGRESQL_CONTAINER.getPassword(),
-                "spring.datasource.url", POSTGRESQL_CONTAINER.getJdbcUrl()
+                "spring.datasource.url", POSTGRESQL_CONTAINER.getJdbcUrl(),
+                "spring.datasource.username", POSTGRESQL_CONTAINER.getUsername(),
+                "spring.datasource.password", POSTGRESQL_CONTAINER.getPassword()
         )).applyTo(applicationContext);
     }
 }

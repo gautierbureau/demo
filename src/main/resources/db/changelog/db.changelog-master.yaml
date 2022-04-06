@@ -1,6 +1,6 @@
 databaseChangeLog:
   - include:
-      file: changesets/init.xml
+      file: init.xml
       relativeToChangelogFile: true
 
   - include:
