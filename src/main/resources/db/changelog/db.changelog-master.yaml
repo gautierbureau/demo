@@ -4,5 +4,5 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
-      file: 2022/04/05-01-changelog.xml
+      file: changesets/changelog_2022-04-06T09:08:39Z.xml
       relativeToChangelogFile: true

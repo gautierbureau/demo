@@ -12,3 +12,9 @@ $> bin/psql postgres -c  "CREATE USER postgres WITH PASSWORD 'postgres' SUPERUSE
 $> bin/pg_ctl -D ./data stop
 $> bin/postgres -D ./data --listen_addresses='*'
 ```
+
+## Liquibase
+
+``` bash
+$> mvn clean compile liquibase:update liquibase:diff 
+```

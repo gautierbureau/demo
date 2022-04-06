@@ -18,7 +18,22 @@
     <properties>
         <java.version>11</java.version>
         <testcontainers.version>1.16.3</testcontainers.version>
-        <maven.jacoco.version>0.8.6</maven.jacoco.version>
+        <maven.jacoco.version>0.8.7</maven.jacoco.version>
+        <maven.spring-boot.version>2.6.6</maven.spring-boot.version>
+        <liquibase-core.version>4.9.1</liquibase-core.version>
+        <liquibase-hibernate.version>4.9.1</liquibase-hibernate.version>
+        <hibernate-core.version>5.6.7.Final</hibernate-core.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+
+        <liquibase-diff.outputFile>src/main/resources/db/changelog/changesets/changelog_${maven.build.timestamp}.xml</liquibase-diff.outputFile>
+        <liquibase.username>sa</liquibase.username>
+        <liquibase.databaseDriver>org.h2.Driver</liquibase.databaseDriver>
+        <liquibase.databaseUrl>jdbc:h2:./target/dummyDB</liquibase.databaseUrl>
+        <!--<liquibase.databaseDriver>org.postgresql.Driver</liquibase.databaseDriver>
+        <liquibase.databaseUrl>jdbc:postgresql://localhost:5432/demo</liquibase.databaseUrl>-->
+        <liquibase.referenceDatabaseUrl>hibernate:spring:${liquibase-hibernate-package}?dialect=org.hibernate.dialect.PostgreSQLDialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</liquibase.referenceDatabaseUrl>
+        <liquibase.referenceDatabaseDriver>liquibase.ext.hibernate.database.connection.HibernateDriver</liquibase.referenceDatabaseDriver>
+        <liquibase-hibernate-package>com.example.demo</liquibase-hibernate-package>
     </properties>
 
     <dependencies>
@@ -75,6 +90,42 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase-core.version}</version>
+                <configuration>
+                    <changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
+                    <diffChangeLogFile>${liquibase-diff.outputFile}</diffChangeLogFile>
+                    <referenceUrl>${liquibase.referenceDatabaseUrl}</referenceUrl>
+                    <referenceDriver>${liquibase.referenceDatabaseDriver}</referenceDriver>
+                    <username>${liquibase.username}</username>
+                    <url>${liquibase.databaseUrl}</url>
+                    <driver>${liquibase.databaseDriver}</driver>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-hibernate5</artifactId>
+                        <version>${liquibase-hibernate.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>${hibernate-core.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        <version>${maven.spring-boot.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>javax.validation</groupId>
+                        <artifactId>validation-api</artifactId>
+                        <version>${validation-api.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
