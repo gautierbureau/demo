@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Docker image
         if: github.ref == 'refs/heads/main'
-        run: mvn compile jib:build -Djib.to.auth.username=$USERNAME -Djib.to.auth.password=$PASSWORD
+        run: mvn clean compile jib:build -Djib.to.auth.username=$USERNAME -Djib.to.auth.password=$PASSWORD
         env:
           USERNAME: ${{ github.actor }}
           PASSWORD: ${{ secrets.CR_PAT }}

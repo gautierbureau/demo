@@ -22,8 +22,8 @@ $> mvn clean compile liquibase:update liquibase:diff
 ## Docker
 
 ``` bash
-$> mvn compile jib:dockerBuild # Build locally
-$> mvn compile jib:build -Djib.to.auth.username=<USER> -Djib.to.auth.password=<PASSWORD> # Build and publish
+$> mvn clean compile jib:dockerBuild # Build locally
+$> mvn clean compile jib:build -Djib.to.auth.username=<USER> -Djib.to.auth.password=<PASSWORD> # Build and publish
 ```
 
 ## Docker compose
