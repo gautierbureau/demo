@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.Person;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,8 +20,7 @@ public class PersonController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "The new person"),
             @ApiResponse(responseCode = "404", description = "Person not found")})
-    public ResponseEntity<String> newPerson(@RequestParam("first_name") String firstName, @RequestParam("last_name") String lastName) {
-        String name = firstName + " " + lastName;
-        return ResponseEntity.ok().contentType(MediaType.TEXT_PLAIN).body(name);
+    public ResponseEntity<Person> newPerson(@RequestParam("first_name") String firstName, @RequestParam("last_name") String lastName) {
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(new Person(1, firstName, lastName));
     }
 }
