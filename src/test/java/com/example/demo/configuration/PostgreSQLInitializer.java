@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class PostgreSQLInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-    private static final String POSTGRESQL_IMAGE = "postgres:13.1";
+    private static final String POSTGRESQL_IMAGE = "postgres:14.2";
     private static final long MEMORY_IN_BYTES = 128 * 1024 * 1024; // 128 MB
     private static final long MEMORY_SWAP_IN_BYTES = 256 * 1024 * 1024; // 256 MB
     private static final PostgreSQLContainer<?> POSTGRESQL_CONTAINER = new PostgreSQLContainer<>(POSTGRESQL_IMAGE)
