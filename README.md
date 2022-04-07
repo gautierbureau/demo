@@ -47,7 +47,9 @@ $> java -jar target/demo-0.0.1-SNAPSHOT.jar
 ## Test API
 
 ``` bash
-$> curl -X POST http://localhost:8080/person\?first_name\=test1\&last_name\=test2
+$> curl -X POST "http://localhost:8080/person?first_name=test&last_name=tutu"
+$> curl -X POST -I "http://localhost:8080/person?first_name=test&last_name=tutu"
+$> curl -X POST -i "http://localhost:8080/person?first_name=test&last_name=tutu"
 ```
 
 ## Swagger
