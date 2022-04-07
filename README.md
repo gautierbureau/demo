@@ -49,3 +49,9 @@ $> java -jar target/demo-0.0.1-SNAPSHOT.jar
 ``` bash
 $> curl -X POST http://localhost:8080/person\?first_name\=test1\&last_name\=test2
 ```
+
+## Swagger
+
+```
+http://localhost:8080/swagger-ui.html 
+```
