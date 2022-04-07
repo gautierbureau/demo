@@ -55,3 +55,10 @@ $> curl -X POST http://localhost:8080/person\?first_name\=test1\&last_name\=test
 ```
 http://localhost:8080/swagger-ui.html 
 ```
+
+## Javadoc
+
+``` bash
+$> mvn javadoc:javadoc
+$> open target/site/apidocs/index.html
+```
