@@ -18,6 +18,7 @@ $> bin/postgres -D ./data --listen_addresses='*'
 ``` bash
 $> mvn clean compile liquibase:update liquibase:diff 
 $> mvn package -DskipTests && rm -f ./src/main/resources/demo.sql && java -jar target/demo-0.0.1-SNAPSHOT.jar --spring.jpa.properties.javax.persistence.schema-generation.scripts.action=create
+$> mvn compile liquibase:dropAll liquibase:diff -Dliquibase-diff.outputFile=out.postgresql.sql
 ```
 
 ## Docker
