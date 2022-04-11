@@ -43,7 +43,8 @@ $> docker-compose exec demo-postgres psql -U postgres demo
 ## Run
 
 ``` bash
-$> java -jar target/demo-0.0.1-SNAPSHOT.jar 
+$> java -jar target/demo-0.0.1-SNAPSHOT.jar
+$> mvn spring-boot:run
 ```
 
 ## Test API
