@@ -1,13 +1,11 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,8 +23,8 @@ public class PersonEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "address", foreignKey = @ForeignKey(name = "address_person_fk"), referencedColumnName = "idAddress")
-    private AddressEntity address;
+    // @ManyToOne
+    // @JoinColumn(name = "address", foreignKey = @ForeignKey(name = "address_person_fk"), referencedColumnName = "idAddress")
+    // private AddressEntity address;
 
 }

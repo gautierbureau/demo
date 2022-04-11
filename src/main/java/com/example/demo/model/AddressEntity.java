@@ -36,7 +36,7 @@ public class AddressEntity {
     @Column(name = "zip_code")
     private Integer zipCode;
 
-    @OneToMany(targetEntity = PersonEntity.class, mappedBy = "address")
-    private List<PersonEntity> persons = new ArrayList<>();
+    // @OneToMany(targetEntity = PersonEntity.class, mappedBy = "address")
+    // private List<PersonEntity> persons = new ArrayList<>();
 
 }
