@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Tag(name = "Person server")
 @AllArgsConstructor
@@ -27,5 +29,20 @@ public class PersonController {
     public ResponseEntity<Person> newPerson(@RequestParam("first_name") String firstName,
                                             @RequestParam("last_name") String lastName) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(personService.create(firstName, lastName));
+    }
+
+    @DeleteMapping(value = "/person/{id}")
+    @Operation(summary = "Delete a person")
+    @ApiResponse(responseCode = "200", description = "Person deleted")
+    public ResponseEntity<String> deletePerson(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(
+                personService.deletePerson(id));
+    }
+
+    @GetMapping(value = "/")
+    @Operation(summary = "Get all persons")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "The list of persons")})
+    public ResponseEntity<List<Person>> getPersonList() {
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(personService.getAllPersons());
     }
 }

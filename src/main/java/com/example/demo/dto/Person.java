@@ -10,21 +10,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Person {
 
+
     private String firstName;
 
     private String lastName;
+
+    private Integer id;
 
     // private Address address;
 
     public PersonEntity convertToEntity() {
         PersonEntity personEntity = new PersonEntity();
         personEntity.setFirstName(this.firstName);
-        personEntity.setLastName(this.firstName);
+        personEntity.setLastName(this.lastName);
         return personEntity;
     }
 
     public Person(PersonEntity personEntity) {
         firstName = personEntity.getFirstName();
         lastName = personEntity.getLastName();
+        id = personEntity.getId();
     }
 }

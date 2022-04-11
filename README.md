@@ -58,7 +58,7 @@ $> curl -X POST -i "http://localhost:8080/person?first_name=test&last_name=tutu"
 ## Swagger
 
 ```
-http://localhost:8080/swagger-ui.html 
+http://localhost:8080/swagger-ui.html
 ```
 
 ## Javadoc
