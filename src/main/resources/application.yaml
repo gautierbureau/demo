@@ -45,3 +45,9 @@ server:
 #logging:
 #  level:
 #    org.springframework.boot.autoconfigure: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -67,3 +67,9 @@ http://localhost:8082/swagger-ui.html
 $> mvn javadoc:javadoc
 $> open target/site/apidocs/index.html
 ```
+
+## Spring actuator
+
+``` bash
+http://localhost:8082/actuator
+```
