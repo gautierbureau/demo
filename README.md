@@ -50,15 +50,15 @@ $> mvn spring-boot:run
 ## Test API
 
 ``` bash
-$> curl -X POST "http://localhost:8080/person?first_name=test&last_name=tutu"
-$> curl -X POST -I "http://localhost:8080/person?first_name=test&last_name=tutu"
-$> curl -X POST -i "http://localhost:8080/person?first_name=test&last_name=tutu"
+$> curl -X POST "http://localhost:8082/person?first_name=test&last_name=tutu"
+$> curl -X POST -I "http://localhost:8082/person?first_name=test&last_name=tutu"
+$> curl -X POST -i "http://localhost:8082/person?first_name=test&last_name=tutu"
 ```
 
 ## Swagger
 
 ```
-http://localhost:8080/swagger-ui.html
+http://localhost:8082/swagger-ui.html
 ```
 
 ## Javadoc

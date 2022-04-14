@@ -36,3 +36,12 @@ spring:
 customQuery:
 
 dbName: demo
+
+server:
+  port : 8082
+
+#debug: true
+
+#logging:
+#  level:
+#    org.springframework.boot.autoconfigure: DEBUG
